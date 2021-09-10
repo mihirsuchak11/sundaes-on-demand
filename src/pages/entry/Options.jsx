@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Row from "react-bootstrap/Row";
 import ScoopOption from "./ScoopOption";
 import ToppingOptions from "./ToppingOptions";
+import AlertBanner from "../common/AlertBanner";
 
 export default function Options({ optionType }) {
   const [items, setItems] = useState([]);
@@ -17,8 +18,7 @@ export default function Options({ optionType }) {
   }, [optionType]);
 
   if (error) {
-    // @ts-ignore
-    return "Error";
+    return <AlertBanner />;
   }
 
   const ItemComponent = optionType === "scoops" ? ScoopOption : ToppingOptions;
